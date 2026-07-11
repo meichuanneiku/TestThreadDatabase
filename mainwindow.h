@@ -25,7 +25,7 @@ private slots:
     void onQuery();          // 查询某分系统
     void onSnapshot();       // 全量快照
 
-    void onWritten(qint64 batch); // 实时累计已写入/更新次数
+    void onWritten(const QString &op, int affected); // 实时累计已写入/更新次数
     void onError(const QString &msg);
 
 private:
@@ -37,7 +37,8 @@ private:
     QPushButton *m_btnSnap;
     QPlainTextEdit *m_log;
 
-    QStringList m_subsystems; // 已加载的分系统名
+    QStringList m_subsystems;            // 已加载的分系统名
+    QMap<QString, QStringList> m_keys;   // 分系统 -> key 列表（内存缓存，避免依赖异步写库时序）
     qint64 m_totalOps = 0;    // 累计写/更新操作次数（实时显示）
 };
 

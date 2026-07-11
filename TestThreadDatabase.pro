@@ -18,11 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    realtimedbwriter.cpp
+    dbservice.cpp
 
 HEADERS += \
     mainwindow.h \
-    realtimedbwriter.h
+    dbservice.h
 
 FORMS += \
     mainwindow.ui
